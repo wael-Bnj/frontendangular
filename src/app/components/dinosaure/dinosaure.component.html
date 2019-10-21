@@ -1,0 +1,88 @@
+<input type="submit" class="btn btn btn-success" value="logOut" (click)="onBackButtonClick()">
+<div class="container"> 
+     
+    <hr>
+    <form  (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+      <h2 class="page-header">Add Dinosaure</h2>
+          <div class="form-group has-success">
+                  <label class="form-control-label" for="inputSuccess1">Age</label>
+                  <input type="text" placeholder="Age" class="form-control is-valid" id="inputValid" name="age" required [(ngModel)]="form.age">
+                  
+                </div>
+                <div class="form-group has-success">
+                      <label class="form-control-label" for="inputSuccess1">famille</label>
+                      <input type="text" placeholder="famille" class="form-control is-valid" id="inputValid" name="famille" required [(ngModel)]="form.famille">
+                      
+                    </div>
+                    <div class="form-group has-success">
+                          <label class="form-control-label" for="inputSuccess1">race</label>
+                          <input type="text" placeholder="race" class="form-control is-valid" id="inputValid" name="race" required [(ngModel)]="form.race">
+                          
+                        </div>
+                        <div class="form-group has-success">
+                            <label class="form-control-label" for="inputSuccess1">nourriture</label>
+                            <input type="text" placeholder="nourriture" class="form-control is-valid" id="inputValid" name="nourriture" required [(ngModel)]="form.nourriture">
+                            
+                          </div>
+ 
+              <input type="submit" class="btn btn btn-success" value="Add">
+    </form>
+</div>
+<hr>
+<div class="container"> 
+  
+    <form  (ngSubmit)="f.form.valid && EditDinosaure(f)" #f="ngForm"  *ngIf="toggeleForm">
+        <h2 class="page-header">Edit Dinosaure</h2>
+          <div class="form-group has-success">
+                  <label class="form-control-label" for="inputSuccess1">Age</label>
+                  <input type="text" placeholder="Age" class="form-control is-valid" id="inputValid" name="age" required [(ngModel)]="selectedDinosaure.age">
+                </div>
+                <div class="form-group has-success">
+                      <label class="form-control-label" for="inputSuccess1">famille</label>
+                      <input type="text" placeholder="famille" class="form-control is-valid" id="inputValid" name="famille" required [(ngModel)]="selectedDinosaure.famille">
+                     
+                    </div>
+                    <div class="form-group has-success">
+                          <label class="form-control-label" for="inputSuccess1">race</label>
+                          <input type="text" placeholder="race" class="form-control is-valid" id="inputValid" name="race" required [(ngModel)]="selectedDinosaure.race">                 
+                        </div>
+                        <div class="form-group has-success">
+                            <label class="form-control-label" for="inputSuccess1">nourriture</label>
+                            <input type="text" placeholder="nourriture" class="form-control is-valid" id="inputValid" name="nourriture" required [(ngModel)]="selectedDinosaure.nourriture">                 
+                          </div>
+                  <input type="submit" class="btn btn btn-success" value="Save"   >
+    </form>
+  </div>
+  <hr>
+<hr>
+<div class="row" >
+    <div *ngFor = "let c of listdinosaure" >
+        <ul>
+                <li>
+        <div class="col-md-3">
+            {{c.age}}
+        </div>
+    </li>
+    <li>
+        <div class="col-md-3">
+            {{c.famille}}
+        </div>
+    </li>
+    <li>
+        <div class="col-md-3">
+            {{c.race}}
+        </div>
+    </li>
+    <li>
+        <div class="col-md-3">
+            {{c.nourriture}}
+        </div>
+    </li>
+        <div class="col-nd-3">
+            <input type="button" (click) ="deleteDinosaure(c._id)" value="Delete" class="btn btn-danger">
+            <input type="button" (click) ="updateContact(c)" value="Update" class="btn btn-danger" [disabled]="toggeleForm" >
+        </div>
+    </ul>
+        <br>
+    </div> 
+</div>
